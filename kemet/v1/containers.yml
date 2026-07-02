@@ -1,0 +1,21 @@
+Container name: "kemet"
+Software versions: "128b5843c12144e7ec0365998ad2ba98f3ed0dce"
+Container paths:
+  Singularity:
+    linux_amd64:
+      path: "/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260629.sif"
+      definition-file: "kmer-ord/kmer-ord.singularity.linux.amd64.20260629.def"
+      build-command: "apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def"
+    linux_arm64:
+      path: ""
+      definition-file: ""
+      build-command: ""
+  Docker:
+    linux_amd64:
+      path: "docker.io/mpampuch/kemet_128b584_linux-amd64:335f2f0f2a1a73d5"
+      definition-file: "kemet/v1/docker.linux.amd64"
+      build-command: "wave -f Dockerfile.wave.linux.amd64 --context . --platform linux/amd64 --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64 --await 60m --log-level DEBUG"
+    linux_arm64:
+      path: ""
+      definition-file: ""
+      build-command: ""
