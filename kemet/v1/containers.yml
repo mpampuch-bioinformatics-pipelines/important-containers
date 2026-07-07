@@ -13,7 +13,6 @@ Container paths:
         definition-file: ''
         build-command: ''
   Docker:
-  version:
     linux_amd64:
       v1: 
         path: 'docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606'
