@@ -1,0 +1,23 @@
+name: kemet
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - python=3.8
+  - mafft
+  - hmmer
+  - diamond
+  - prodigal
+
+  # CarveMe
+  - carveme=1.6.6
+  - reframed=1.6.0
+
+  # Solver stack
+  - scip=9.1.*
+  - pyscipopt=5.1.*
+  - glpk
+  - swiglpk

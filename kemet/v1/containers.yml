@@ -12,7 +12,7 @@ Container paths:
       build-command: ""
   Docker:
     linux_amd64:
-      path: "docker.io/mpampuch/kemet_128b584_linux-amd64:335f2f0f2a1a73d5"
+      path: "docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606"
       definition-file: "kemet/v1/docker.linux.amd64"
       build-command: "wave -f Dockerfile.wave.linux.amd64 --context . --platform linux/amd64 --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64 --await 60m --log-level DEBUG"
     linux_arm64:
