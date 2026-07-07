@@ -1,25 +1,25 @@
-Container name: "kmer-ord"
-Software versions: "aa22b130903e8f6aa71c881b22c4b18b2efd2486"
+Container name: 'kmer-ord'
+Software versions: 'aa22b130903e8f6aa71c881b22c4b18b2efd2486'
 Container paths:
   Singularity:
     linux_amd64:
       v1:
-        path: "/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260629.sif"
-        definition-file: "kmer-ord/kmer-ord.singularity.linux.amd64.20260629.def"
-        build-command: "apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def"
+        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260629.sif'
+        definition-file: 'kmer-ord/v1/kmer-ord.singularity.linux.amd64.20260629.def'
+        build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def'
     linux_arm64:
       v1:
-        path: ""
-        definition-file: ""
-        build-command: ""
+        path: ''
+        definition-file: ''
+        build-command: ''
   Docker:
     linux_amd64:
       v1:
-        path: ""
-        definition-file: ""
-        build-command: ""
+        path: 'mpampuch/kmerord_aa22b13_linux-amd64:236dec627bd6c001'
+        definition-file: 'kmer-ord/v1/docker.linux.amd64/Dockerfile'
+        build-command: 'wave -f Dockerfile --platform linux/amd64 --freeze --build-repo mpampuch/kmerord_aa22b13_linux-amd64 --log-level "DEBUG" --await 60m'
     linux_arm64:
       v1:
-        path: ""
-        definition-file: ""
-        build-command: ""
+        path: ''
+        definition-file: ''
+        build-command: ''
