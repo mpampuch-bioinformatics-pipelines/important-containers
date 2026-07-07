@@ -2,6 +2,26 @@
 
 Tests I ran so far
 
+## Basic setup 
+
+`kmer-ord setup` outputs:
+
+```
+Verifying external tools... ──────────────────────────────────────────────────────────
+    kmer-counter detected and working
+    tiara detected and working
+    barrnap detected and working
+    flye detected and working
+    minimap2 detected and working
+    samtools detected and working
+    Rscript detected and working
+----------------------------------------------------------------------
+    
+All tools verified successfully
+    
+Setup complete. kmerord is ready to use.
+```
+
 ## All Available Dimensionality Reduction techniques
 
 ```bash
