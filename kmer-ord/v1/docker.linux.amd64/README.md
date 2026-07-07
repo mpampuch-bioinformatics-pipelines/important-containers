@@ -20,7 +20,7 @@ kmer-ord bin --host 0.0.0.0 --db path/to/kmerord.sqlite
 
 I don't know if the webserver is working as expected because I don't see any way to integrate the tiara results into the visualization
 
-![Alt Text](mpampuch-bioinformatics-pipelines/important-containers/kmer-ord/v1/20270707_is-this-the-correct-view-on-webserver-when-I-know-Tiara-has-been-run-correctly.png)
+![20270707_web-app-view](../20270707_is-this-the-correct-view-on-webserver-when-I-know-Tiara-has-been-run-correctly.png)
 
 
 I know tiara ran correctly for this run:
