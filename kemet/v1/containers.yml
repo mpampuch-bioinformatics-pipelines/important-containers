@@ -1,18 +1,5 @@
 Container name: 'kemet'
 Container paths:
-  Singularity:
-    linux_amd64:
-      v1: 
-        path: 'oras://docker.io/mpampuch/kemet_128b584_linux-amd64_singularity:baaab2c9811796da'
-        definition-file: 'kemet/v1/docker.linux.amd64'
-        build-command: 'wave -i docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606 --singularity --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64_singularity --await --log-level DEBUG'
-        commit-id: '128b5843c12144e7ec0365998ad2ba98f3ed0dce'
-    linux_arm64:
-      v1:
-        path: ''
-        definition-file: ''
-        build-command: ''
-        commit-id: ''
   Docker:
     linux_amd64:
       v1: 
@@ -22,6 +9,19 @@ Container paths:
         commit-id: '128b5843c12144e7ec0365998ad2ba98f3ed0dce'
     linux_arm64:
       v1: 
+        path: ''
+        definition-file: ''
+        build-command: ''
+        commit-id: ''
+  Singularity:
+    linux_amd64:
+      v1: 
+        path: 'oras://docker.io/mpampuch/kemet_128b584_linux-amd64_singularity:baaab2c9811796da'
+        definition-file: 'kemet/v1/docker.linux.amd64'
+        build-command: 'wave -i docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606 --singularity --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64_singularity --await --log-level DEBUG'
+        commit-id: '128b5843c12144e7ec0365998ad2ba98f3ed0dce'
+    linux_arm64:
+      v1:
         path: ''
         definition-file: ''
         build-command: ''
