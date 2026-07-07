@@ -1,6 +1,6 @@
 Container name: ''
 Container paths:
-  Singularity:
+  Docker:
     linux_amd64:
       v1:
         path: ''
@@ -13,7 +13,7 @@ Container paths:
         definition-file: ''
         build-command: ''
         commit-id: ''
-  Docker:
+  Singularity:
     linux_amd64:
       v1:
         path: ''
