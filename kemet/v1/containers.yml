@@ -3,19 +3,24 @@ Software versions: "128b5843c12144e7ec0365998ad2ba98f3ed0dce"
 Container paths:
   Singularity:
     linux_amd64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1: 
+        path: "oras://docker.io/mpampuch/kemet_128b584_linux-amd64_singularity:baaab2c9811796da"
+        definition-file: "kemet/v1/docker.linux.amd64"
+        build-command: "wave -i docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606 --singularity --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64_singularity --await --log-level DEBUG"
     linux_arm64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1:
+        path: ""
+        definition-file: ""
+        build-command: ""
   Docker:
+  version:
     linux_amd64:
-      path: "docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606"
-      definition-file: "kemet/v1/docker.linux.amd64"
-      build-command: "wave -f Dockerfile.wave.linux.amd64 --context . --platform linux/amd64 --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64 --await 60m --log-level DEBUG"
+      v1: 
+        path: "docker.io/mpampuch/kemet_128b584_linux-amd64:bfc5f000ca879606"
+        definition-file: "kemet/v1/docker.linux.amd64"
+        build-command: "wave -f Dockerfile.wave.linux.amd64 --context . --platform linux/amd64 --freeze --build-repo docker.io/mpampuch/kemet_128b584_linux-amd64 --await 60m --log-level DEBUG"
     linux_arm64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1: 
+        path: ""
+        definition-file: ""
+        build-command: ""

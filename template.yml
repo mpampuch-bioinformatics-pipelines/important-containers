@@ -3,19 +3,23 @@ Software versions: ""
 Container paths:
   Singularity:
     linux_amd64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1:
+        path: ""
+        definition-file: ""
+        build-command: ""
     linux_arm64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1:
+        path: ""
+        definition-file: ""
+        build-command: ""
   Docker:
     linux_amd64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1:
+        path: ""
+        definition-file: ""
+        build-command: ""
     linux_arm64:
-      path: ""
-      definition-file: ""
-      build-command: ""
+      v1:
+        path: ""
+        definition-file: ""
+        build-command: ""
