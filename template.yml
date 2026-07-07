@@ -1,5 +1,4 @@
 Container name: ''
-Software versions: ''
 Container paths:
   Singularity:
     linux_amd64:
@@ -7,19 +6,23 @@ Container paths:
         path: ''
         definition-file: ''
         build-command: ''
+        commit-id:
     linux_arm64:
       v1:
         path: ''
         definition-file: ''
         build-command: ''
+        commit-id:
   Docker:
     linux_amd64:
       v1:
         path: ''
         definition-file: ''
         build-command: ''
+        commit-id:
     linux_arm64:
       v1:
         path: ''
         definition-file: ''
         build-command: ''
+        commit-id:
