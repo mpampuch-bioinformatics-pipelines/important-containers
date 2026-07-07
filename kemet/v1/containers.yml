@@ -3,9 +3,9 @@ Software versions: "128b5843c12144e7ec0365998ad2ba98f3ed0dce"
 Container paths:
   Singularity:
     linux_amd64:
-      path: "/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260629.sif"
-      definition-file: "kmer-ord/kmer-ord.singularity.linux.amd64.20260629.def"
-      build-command: "apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def"
+      path: ""
+      definition-file: ""
+      build-command: ""
     linux_arm64:
       path: ""
       definition-file: ""
