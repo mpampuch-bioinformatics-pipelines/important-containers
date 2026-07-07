@@ -17,4 +17,4 @@ kmer-ord project --dr umap,tsne,trimap,pacmap,localmap,pca,sparse_pca,kernel_pca
 
 Definitely worked! ✅
 
-![20270707_web-app-view](../20270707_is-this-the-correct-view-on-webserver-when-I-know-Tiara-has-been-run-correctly.png)
+![20270707_web-app-view](../20260707_kmer-ord-results_from-sing-container-v1-and-web-app-from-docker-container-v1_tiara-1st-pass.png)
