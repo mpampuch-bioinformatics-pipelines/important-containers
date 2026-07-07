@@ -12,7 +12,7 @@ Container paths:
         path: ''
         definition-file: ''
         build-command: ''
-        commit-id:
+        commit-id: ''
   Docker:
     linux_amd64:
       v1:
@@ -25,4 +25,4 @@ Container paths:
         path: ''
         definition-file: ''
         build-command: ''
-        commit-id:
+        commit-id: ''
