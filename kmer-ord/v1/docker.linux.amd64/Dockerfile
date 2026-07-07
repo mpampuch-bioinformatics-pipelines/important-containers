@@ -1,4 +1,3 @@
-cat Dockerfile
 FROM condaforge/miniforge3:26.3.2-3
 
 SHELL ["/bin/bash", "-c"]
