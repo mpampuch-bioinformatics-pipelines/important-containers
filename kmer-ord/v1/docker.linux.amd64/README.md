@@ -138,7 +138,7 @@ NotImplementedError: Unexpected dshape <function dshape at 0x7fff77d384a0>
 
 2. What does `Overlay Points` do?
 
-3. Are there any recommendations on choosing good kmer sizes to maximize separations between the clusters and/or also for the individual dimensionality reduction techniques, any recommendations for choosing the best hyperparameters (either based on the chosen kmer size or independent of it) to get the best clustering of reads based on their origin
+3. Are there any recommendations on choosing good kmer sizes to maximize separations between the clusters and/or also for the individual dimensionality reduction techniques, any recommendations for choosing the best hyperparameters (either based on the chosen kmer size or independent of it) to get the best clustering of reads based on their origin?
 
 ##### Also some improvements for Frederiks team
 
