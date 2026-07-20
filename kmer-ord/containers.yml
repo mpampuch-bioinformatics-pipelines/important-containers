@@ -20,6 +20,11 @@ Container paths:
         definition-file: 'kmer-ord/v1/kmer-ord.singularity.linux.amd64.20260629.def'
         build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def'
         commit-id: 'aa22b130903e8f6aa71c881b22c4b18b2efd2486'
+      v2:
+        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260719.sif'
+        definition-file: 'kmer-ord/v2/kmer-ord.singularity.linux.amd64.20260719.def'
+        build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.sif kmer-ord.def'
+        commit-id: 'aa22b130903e8f6aa71c881b22c4b18b2efd2486'
     linux_arm64:
       v1:
         path: ''

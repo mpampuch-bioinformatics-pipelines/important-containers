@@ -1,0 +1,85 @@
+Bootstrap: docker
+From: condaforge/miniforge3:26.3.2-3
+
+%post
+    set -eux
+    
+     # ---- STEP 1: DECONTAMINATE HOST CONDA STATE ----
+    unset CONDA_PREFIX
+    unset CONDA_SHLVL
+    unset CONDA_DEFAULT_ENV
+    unset _CE_CONDA
+    unset _CE_M
+    unset CONDA_EXE
+
+    export CONDA_EXE=/opt/conda/bin/conda
+    export PATH=/opt/conda/bin:$PATH
+    . /opt/conda/etc/profile.d/conda.sh
+
+
+    WORKDIR=$(mktemp -d)
+    cd "$WORKDIR"
+    
+
+    # ---- system build tools (critical for Rust native deps) ----
+    # ---- and add seqkit ----
+    conda install -y -n base \
+        -c conda-forge \
+        -c bioconda \
+        git \
+        compilers \
+        binutils \
+        make \
+        cmake \
+        pkg-config \
+        seqkit \
+        > /tmp/buildtools.log 2>&1
+
+    # ---- FIX: proper conda env install from environment.yml ----
+    git clone https://github.com/FDBoever/kmer-ord.git
+    cd kmer-ord
+
+    conda env update -n base -f environment.yml \
+        > /tmp/conda_env.log 2>&1 || (cat /tmp/conda_env.log >&2 && exit 1)
+
+    # ---- force stable GNU toolchain for Rust ----
+    export CC=x86_64-conda-linux-gnu-cc
+    export CXX=x86_64-conda-linux-gnu-c++
+    export AR=x86_64-conda-linux-gnu-ar
+
+    # CRITICAL FIX: avoid rust-lld crash
+    export RUSTFLAGS="-C linker=x86_64-conda-linux-gnu-cc -C link-arg=-fuse-ld=bfd"
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-conda-linux-gnu-cc
+
+    # optional stability tweaks
+    export CARGO_NET_GIT_FETCH_WITH_CLI=true
+    export RUST_BACKTRACE=1
+
+    pip install .
+
+    kmer-ord setup
+
+    conda env export --name base --no-builds > /environment.lock
+
+    conda clean -a -y
+    rm -rf "$WORKDIR"
+
+%environment
+    export MAMBA_ROOT_PREFIX=/opt/conda
+    export PATH="$MAMBA_ROOT_PREFIX/bin:$PATH"
+    
+     # CRITICAL: enable conda shell functions
+    . /opt/conda/etc/profile.d/conda.sh
+
+    # ensure runtime linker consistency
+    export CC=x86_64-conda-linux-gnu-cc
+    export CXX=x86_64-conda-linux-gnu-c++
+
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-conda-linux-gnu-cc
+
+%runscript
+    exec kmer-ord "$@"
+
+%test
+    kmer-ord --help
