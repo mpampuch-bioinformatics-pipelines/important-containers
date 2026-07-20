@@ -1,0 +1,28 @@
+Container name: 'kmer-ord'
+Container paths:
+  Docker:
+    linux_amd64:
+      v1:
+        path: ''
+        definition-file: ''
+        build-command: 'wave -f Dockerfile --platform linux/amd64 --freeze --build-repo mpampuch/kmerord_aa22b13_linux-amd64 --log-level "DEBUG" --await 60m'
+        commit-id: ''
+    linux_arm64:
+      v1:
+        path: ''
+        definition-file: ''
+        build-command: ''
+        commit-id: ''
+  Singularity:
+    linux_amd64:
+      v1:
+        path: '/ibex/project/c2303/20260720_make-smudgeplot-container/smudgeplot.0.5.4.20260720.potentiallyWorking.sif'
+        definition-file: 'smudgeplot/v1/singularity.linux.amd64/smudgeplot.v0.5.4.singularity.linux.amd64.20260720.def'
+        build-command: 'apptainer build --ignore-fakeroot-command smudgeplot.0.5.4.sif smudgeplot.v0.5.4.singularity.linux.amd64.20260720.def'
+        commit-id: '6a47410b01960cb7b373f44d5dace3613666b5a9'
+    linux_arm64:
+      v1:
+        path: ''
+        definition-file: ''
+        build-command: ''
+        commit-id: ''

@@ -1,0 +1,96 @@
+Bootstrap: docker
+From: condaforge/miniforge3:26.3.2-3
+
+%post
+    set -ex
+
+    export PATH=/opt/conda/bin:$PATH
+    . /opt/conda/etc/profile.d/conda.sh
+
+    # Build dependencies + FastK
+    conda install -y -n base \
+        -c conda-forge \
+        -c bioconda \
+        git \
+        compilers \
+        zlib \
+        pip \
+        fastk
+
+    PREFIX=/opt/conda
+
+    echo "===== Environment ====="
+    echo "PREFIX=$PREFIX"
+    which python
+    python --version
+    which pip
+    pip --version
+    which gcc || true
+    gcc --version || true
+
+    echo
+    echo "===== Check zlib ====="
+    conda list zlib || true
+
+    echo
+    echo "===== Locate zlib.h ====="
+    find "$PREFIX" -name zlib.h || true
+
+    echo
+    echo "===== Include directory ====="
+    ls -lah "$PREFIX/include" || true
+
+    echo
+    echo "===== GCC include search path ====="
+    echo | gcc -xc -E -Wp,-v - 2>&1 || true
+
+    export CPATH="$PREFIX/include:${CPATH:-}"
+    export LIBRARY_PATH="$PREFIX/lib:${LIBRARY_PATH:-}"
+    export C_INCLUDE_PATH="$PREFIX/include:${C_INCLUDE_PATH:-}"
+    export CPLUS_INCLUDE_PATH="$PREFIX/include:${CPLUS_INCLUDE_PATH:-}"
+    export CFLAGS="-I$PREFIX/include"
+    export CPPFLAGS="-I$PREFIX/include"
+    export LDFLAGS="-L$PREFIX/lib"
+
+    echo
+    echo "===== Compiler environment ====="
+    env | grep -E '^(CPATH|LIBRARY_PATH|C_INCLUDE_PATH|CPLUS_INCLUDE_PATH|CFLAGS|CPPFLAGS|LDFLAGS)'
+
+    WORKDIR=$(mktemp -d)
+    cd "$WORKDIR"
+
+    git clone --depth 1 --branch v0.5.4 \
+        https://github.com/KamilSJaron/smudgeplot.git
+
+    cd smudgeplot
+
+    echo
+    echo "===== Repository files ====="
+    ls -lah
+
+    echo
+    echo "===== pyproject.toml ====="
+    [ -f pyproject.toml ] && cat pyproject.toml || true
+
+    echo
+    echo "===== setup.py (first 200 lines) ====="
+    [ -f setup.py ] && sed -n '1,200p' setup.py || true
+
+    echo
+    echo "===== Installing ====="
+    pip install -v .
+
+    cd /
+    rm -rf "$WORKDIR"
+
+    conda clean -afy
+
+%environment
+    export PATH=/opt/conda/bin:$PATH
+
+%runscript
+    exec smudgeplot "$@"
+
+%test
+    smudgeplot --help
+    python -c "import smudgeplot"
