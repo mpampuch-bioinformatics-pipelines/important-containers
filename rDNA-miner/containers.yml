@@ -1,0 +1,28 @@
+Container name: 'rDNA-miner'
+Container paths:
+  Docker:
+    linux_amd64:
+      v1:
+        path: 'mpampuch/rdna-miner_f9a8657_linux-amd64:eb9d44d59850b519'
+        definition-file: 'rDNA-miner/v1/docker.linux.amd64/Dockerfile'
+        build-command: 'wave -f Dockerfile --platform linux/amd64 --freeze --build-repo mpampuch/rDNA-miner_f9a8657_linux-amd64 --log-level "DEBUG" --await 60m'
+        commit-id: 'f9a8657de2ece144795c173b2f2ff1805cdc570b'
+    linux_arm64:
+      v1:
+        path: ''
+        definition-file: ''
+        build-command: ''
+        commit-id: ''
+  Singularity:
+    linux_amd64:
+      v1:
+        path: '/ibex/project/c2303/20260723_make-rDNA-miner-singularity-container/rDNA-miner.linux.amd64.potentiallyWorking.needsTesting.20260726.sif'
+        definition-file: 'rDNA-miner/v1/singularity.linux.amd46/rDNA-miner.singularity.linux.amd64.20260726.def'
+        build-command: 'apptainer build --ignore-fakeroot-command rDNA-miner.sif rDNA-miner.def'
+        commit-id: 'f9a8657de2ece144795c173b2f2ff1805cdc570b'
+    linux_arm64:
+      v1:
+        path: ''
+        definition-file: ''
+        build-command: ''
+        commit-id: ''

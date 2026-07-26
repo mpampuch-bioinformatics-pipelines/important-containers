@@ -1,0 +1,89 @@
+Bootstrap: docker
+From: condaforge/miniforge3:26.3.2-3
+
+%post
+    set -eux
+
+    # Prevent host conda contamination
+    unset CONDA_PREFIX
+    unset CONDA_SHLVL
+    unset CONDA_DEFAULT_ENV
+    unset _CE_CONDA
+    unset _CE_M
+    unset CONDA_EXE
+
+    export PATH=/opt/conda/bin:$PATH
+    . /opt/conda/etc/profile.d/conda.sh
+
+    # Avoid matplotlib cache warnings
+    mkdir -p /tmp/matplotlib
+
+    WORKDIR=$(mktemp -d)
+    cd "$WORKDIR"
+
+    # Basic build tools
+    conda install -y -n base \
+        -c conda-forge \
+        -c bioconda \
+        git \
+        make \
+        cmake \
+        pkg-config
+
+    # Clone repository
+    git clone https://github.com/FDBoever/rDNA-miner
+    cd rDNA-miner
+    git checkout f9a8657de2ece144795c173b2f2ff1805cdc570b
+
+    # Pin barrnap version
+    sed -i 's/- barrnap/- barrnap=0.9/' environment.yml
+
+    # Create the project environment
+    mamba env create -f environment.yml || \
+        conda env create -f environment.yml
+
+    # Install the Python package
+    conda run -n rdna-miner python -m pip install .
+
+    # Optional: install databases
+    # conda run -n rdna-miner rdna-miner db install all
+
+    # Verify installation
+    conda run -n rdna-miner python -c "import rdna_miner"
+    conda run -n rdna-miner barrnap --help
+    conda run -n rdna-miner flye --help
+    conda run -n rdna-miner minimap2 --help
+    conda run -n rdna-miner samtools --help
+    conda run -n rdna-miner Rscript --version
+    conda run -n rdna-miner rdna-miner --help
+
+    # Save environment specification
+    conda env export -n rdna-miner --no-builds > /environment.lock
+
+    conda clean -afy
+
+    cd /
+    rm -rf "$WORKDIR"
+
+%environment
+    export PATH=/opt/conda/bin:$PATH
+    export MPLCONFIGDIR=/tmp/matplotlib
+    . /opt/conda/etc/profile.d/conda.sh
+
+%runscript
+    . /opt/conda/etc/profile.d/conda.sh
+    export MPLCONFIGDIR=/tmp/matplotlib
+    conda activate rdna-miner
+    exec rdna-miner "$@"
+
+%test
+    . /opt/conda/etc/profile.d/conda.sh
+    export MPLCONFIGDIR=/tmp/matplotlib
+    conda activate rdna-miner
+
+    barrnap --help
+    flye --help
+    minimap2 --help
+    samtools --help
+    Rscript --version
+    rdna-miner --help
