@@ -13,6 +13,14 @@ docker container stop $(docker ps | rg 8050 | awk '{print $1}')
 docker run -it -p 8050:8050  -v "$PWD":/work  -w /work  --entrypoint /bin/bash  mpampuch/kmerord_aa22b13_linux-amd64:236dec627bd6c001
 ```
 
+I had to make these patches to get the plotting working better (I wasn't able to get a clean container build so is is what I did instead before opening the web app):
+
+```bash
+sed -n '1765,1780p' /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py
+cp /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py.bak
+sed -i 's/cm\.get_cmap(/plt.get_cmap(/g' /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py
+```
+
 And then to be able to open the webserver on a brower, I had to run the command like this within the container
 
 ```bash
