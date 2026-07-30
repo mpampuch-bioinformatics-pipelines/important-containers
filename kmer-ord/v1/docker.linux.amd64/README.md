@@ -7,6 +7,9 @@
 To get the web server running, had to run it like this:
 
 ```bash
+# Stop any existing processes that are allocating the port
+docker container stop $(docker ps | rg 8050 | awk '{print $1}')
+# Run the container
 docker run -it -p 8050:8050  -v "$PWD":/work  -w /work  --entrypoint /bin/bash  mpampuch/kmerord_aa22b13_linux-amd64:236dec627bd6c001
 ```
 
