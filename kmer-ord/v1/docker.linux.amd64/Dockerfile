@@ -65,6 +65,14 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda clean -afy
 
 # ----------------------------------------------------------------------
+# Patch Broken Webserver Code
+# ----------------------------------------------------------------------
+
+RUN sed -n '1765,1780p' /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py
+RUN cp /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py.bak
+RUN sed -i 's/cm\.get_cmap(/plt.get_cmap(/g' /opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py
+
+# ----------------------------------------------------------------------
 # Cleanup
 # ----------------------------------------------------------------------
 RUN rm -rf /tmp/kmer-ord
