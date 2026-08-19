@@ -194,3 +194,135 @@ process didn't exit successfully: `/tmp/kmerord_rust_tool_build/target/release/b
 warning: build failed, waiting for other jobs to finish...
 ERROR conda.cli.main_run:execute(148): `conda run cargo build --release` failed. (See above for error)
 ```
+
+
+#### 20260818
+
+```
+192.168.65.1 - - [19/Aug/2026 19:37:58] "POST /_dash-update-component HTTP/1.1" 200 -
+[2026-08-19 19:37:59,275] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/backends/_flask.py", line 264, in _dispatch
+    response_data = ctx.run(partial_func)
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 783, in add_context
+    raise err
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 774, in add_context
+    output_value = _invoke_callback(func, *func_args, **func_kwargs)  # type: ignore[reportArgumentType]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 58, in _invoke_callback
+    return func(*args, **kwargs)  # %% callback invoked %%
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py", line 1605, in update_multiple_coord_plots
+    base_img = create_datashader_image(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py", line 416, in create_datashader_image
+    agg = cvs.points(df_ds, x='x', y='y', agg=ds.count_cat('cat_value'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/core.py", line 232, in points
+    return bypixel(source, self, glyph, agg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/core.py", line 1359, in bypixel
+    return bypixel.pipeline(source, schema, canvas, glyph, agg, antialias=antialias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/utils.py", line 118, in __call__
+    return lk[typ](head, *rest, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/data_libraries/pandas.py", line 17, in pandas_pipeline
+    return glyph_dispatch(glyph, df, schema, canvas, summary, antialias=antialias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/utils.py", line 121, in __call__
+    return lk[cls](head, *rest, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/data_libraries/pandas.py", line 48, in default
+    bases = create((height, width))
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/compiler.py", line 301, in <lambda>
+    return lambda shape: tuple(c(shape, array_module) for c in creators)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/compiler.py", line 301, in <genexpr>
+    return lambda shape: tuple(c(shape, array_module) for c in creators)
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/reductions.py", line 791, in <lambda>
+    return lambda shape, array_module: self.reduction._build_create(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/reductions.py", line 418, in _build_create
+    raise NotImplementedError(f"Unexpected dshape {dshape}")
+NotImplementedError: Unexpected dshape <function dshape at 0x7fff77d136a0>
+192.168.65.1 - - [19/Aug/2026 19:37:59] "POST /_dash-update-component HTTP/1.1" 500 -
+192.168.65.1 - - [19/Aug/2026 19:37:59] "POST /_dash-update-component HTTP/1.1" 200 -
+[2026-08-19 19:38:00,653] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/backends/_flask.py", line 264, in _dispatch
+    response_data = ctx.run(partial_func)
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 783, in add_context
+    raise err
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 774, in add_context
+    output_value = _invoke_callback(func, *func_args, **func_kwargs)  # type: ignore[reportArgumentType]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/dash/_callback.py", line 58, in _invoke_callback
+    return func(*args, **kwargs)  # %% callback invoked %%
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py", line 1605, in update_multiple_coord_plots
+    base_img = create_datashader_image(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/kmer_ord/dash/b2w.py", line 416, in create_datashader_image
+    agg = cvs.points(df_ds, x='x', y='y', agg=ds.count_cat('cat_value'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/core.py", line 232, in points
+    return bypixel(source, self, glyph, agg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/core.py", line 1359, in bypixel
+    return bypixel.pipeline(source, schema, canvas, glyph, agg, antialias=antialias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/utils.py", line 118, in __call__
+    return lk[typ](head, *rest, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/data_libraries/pandas.py", line 17, in pandas_pipeline
+    return glyph_dispatch(glyph, df, schema, canvas, summary, antialias=antialias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/utils.py", line 121, in __call__
+    return lk[cls](head, *rest, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/data_libraries/pandas.py", line 48, in default
+    bases = create((height, width))
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/compiler.py", line 301, in <lambda>
+    return lambda shape: tuple(c(shape, array_module) for c in creators)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/compiler.py", line 301, in <genexpr>
+    return lambda shape: tuple(c(shape, array_module) for c in creators)
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/reductions.py", line 791, in <lambda>
+    return lambda shape, array_module: self.reduction._build_create(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/datashader/reductions.py", line 418, in _build_create
+    raise NotImplementedError(f"Unexpected dshape {dshape}")
+NotImplementedError: Unexpected dshape <function dshape at 0x7fff77d136a0>
+192.168.65.1 - - [19/Aug/2026 19:38:00] "POST /_dash-update-component HTTP/1.1" 500 -
+```
