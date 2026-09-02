@@ -1,4 +1,4 @@
-Container name: 'kmer-ord'
+Container name: 'smudgeplot'
 Container paths:
   Docker:
     linux_amd64:
