@@ -49,7 +49,7 @@ Container paths:
         path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260925.RAM-efficient-fork.v8.sif'
         definition-file: 'kmer-ord/v7/kmer-ord.linux.amd64.RAM-efficient-fork/kmer-ord.20260925.RAM-efficient-fork.v8.def'
         build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260925.RAM-efficient-fork.v8.sif kmer-ord.20260925.RAM-efficient-fork.v8.def'
-        commit-id: 'fbb0222630175fb73aa4f9504bb2753362b7f233'
+        commit-id: 'e4e3d78534893e5b168a4ad1d186824c00c86ba2'
 
     linux_arm64:
       v1:

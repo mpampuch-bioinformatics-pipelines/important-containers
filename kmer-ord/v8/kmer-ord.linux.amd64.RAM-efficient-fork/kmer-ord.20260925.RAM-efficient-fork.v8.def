@@ -72,7 +72,7 @@ From: condaforge/miniforge3:26.3.2-3
     git clone https://github.com/mpampuch/kmer-ord
     cd kmer-ord
     git checkout RAM-reduced
-    git checkout fbb0222630175fb73aa4f9504bb2753362b7f233
+    git checkout e4e3d78534893e5b168a4ad1d186824c00c86ba2
 
     # ---- REPLACE env_manager.py WITH LOCAL VERSION ----
     cp /opt/env_manager.py src/kmer_ord/system/env_manager.py
