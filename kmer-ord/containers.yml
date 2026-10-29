@@ -5,8 +5,13 @@ Container paths:
       v1:
         path: 'mpampuch/kmerord_aa22b13_linux-amd64:236dec627bd6c001'
         definition-file: 'kmer-ord/v1/docker.linux.amd64/Dockerfile'
-        build-command: 'wave -f Dockerfile --platform linux/amd64 --freeze --build-repo mpampuch/kmerord_aa22b13_linux-amd64 --log-level "DEBUG" --await 60m'
+        build-command: './kmer-ord/v13/docker.linux.amd64/wave-build.sh'
         commit-id: 'aa22b130903e8f6aa71c881b22c4b18b2efd2486'
+      v13:
+        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20261028.RAM-efficient-fork.v13.sif'
+        definition-file: 'kmer-ord/v13/singularity.linux.amd64/kmer-ord.20261028.RAM-efficient-fork.v13.def'
+        build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20261028.RAM-efficient-fork.v13.sif kmer-ord.20261028.RAM-efficient-fork.v13.def'
+        commit-id: '7ec912c47a23256dcd948843e9c1e8573b0ff565'
     linux_arm64:
       v1:
         path: ''
@@ -41,15 +46,15 @@ Container paths:
         build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260908.RAM-efficient-fork.v5.sif kmer-ord.20260908.RAM-efficient-fork.def'
         commit-id: '4df4e525a44f3cfefaa0f662a7b8a2e572725d37'
       v7:
-        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260908.RAM-efficient-fork.v7.sif'
+        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260908.RAM-efficient-fork.v5.sif'
         definition-file: 'kmer-ord/v7/kmer-ord.linux.amd64.RAM-efficient-fork/kmer-ord.20260924.RAM-efficient-fork.v7.def'
         build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260924.RAM-efficient-fork.v7.sif kmer-ord.20260924.RAM-efficient-fork.v7.def'
-        commit-id: '3ead20e168d689970fb799f9bbd4ffb5c6bc7bae'
-      v8:
-        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260925.RAM-efficient-fork.v8.sif'
-        definition-file: 'kmer-ord/v7/kmer-ord.linux.amd64.RAM-efficient-fork/kmer-ord.20260925.RAM-efficient-fork.v8.def'
-        build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20260925.RAM-efficient-fork.v8.sif kmer-ord.20260925.RAM-efficient-fork.v8.def'
-        commit-id: 'e4e3d78534893e5b168a4ad1d186824c00c86ba2'
+        commit-id: 'ab98d8127ef473f2b8552f2798e51433c2cc420f'
+      v13:
+        path: '/ibex/project/c2303/20260614_make-kmer-ord-singularity-container/kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20261028.RAM-efficient-fork.v13.sif'
+        definition-file: 'kmer-ord/v13/singularity.linux.amd64/kmer-ord.20261028.RAM-efficient-fork.v13.def'
+        build-command: 'apptainer build --ignore-fakeroot-command kmer-ord.linux.amd64.potentiallyWorking.needsTesting.20261028.RAM-efficient-fork.v13.sif kmer-ord.20261028.RAM-efficient-fork.v13.def'
+        commit-id: '7ec912c47a23256dcd948843e9c1e8573b0ff565'
 
     linux_arm64:
       v1:
